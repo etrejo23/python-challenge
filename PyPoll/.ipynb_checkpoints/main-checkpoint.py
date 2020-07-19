@@ -2,7 +2,7 @@
  "cells": [
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": 11,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -12,7 +12,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 4,
+   "execution_count": 12,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -21,7 +21,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 5,
+   "execution_count": 13,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -43,83 +43,32 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 6,
+   "execution_count": 14,
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "3521001\n"
-     ]
-    }
-   ],
-   "source": [
-    "print(totalVotes)"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 7,
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "[]\n"
-     ]
-    }
-   ],
-   "source": [
-    "print(Candidates[:100])"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 8,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "#NumOfCandidates=collections.Counter(Candidates)\n",
-    "#print(NumOfCandidates)"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 9,
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "{'Khan': 2218231, 'Correy': 704200, 'Li': 492940, \"O'Tooley\": 105630}\n"
-     ]
-    }
-   ],
-   "source": [
-    "print(dicOfCandidates)"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 33,
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
+      "Election Results\n",
+      "-------------------------\n",
+      "Total Votes: 3521001\n",
+      "-------------------------\n",
       "Khan:63.0% (2218231)\n",
       "Correy:20.0% (704200)\n",
       "Li:14.0% (492940)\n",
       "O'Tooley:3.0% (105630)\n",
-      "The winner is: Khan\n"
+      "-------------------------\n",
+      "Winner: Khan\n",
+      "-------------------------\n"
      ]
     }
    ],
    "source": [
+    "print(\"Election Results\")\n",
+    "print(\"-------------------------\")\n",
+    "print(\"Total Votes: \" +str(totalVotes))\n",
+    "print(\"-------------------------\")\n",
     "for candidate in dicOfCandidates:\n",
     "    percentageOfVotes=round((dicOfCandidates[candidate]/float(totalVotes))*100.0,3)\n",
     "        \n",
@@ -130,14 +79,45 @@
     "mostVotes=max(listOfValues)\n",
     "indexOfWinner=listOfValues.index(mostVotes)\n",
     "namesOfCandidates=list(dicOfCandidates.keys())\n",
-    "print(\"The winner is: \" + str(namesOfCandidates[indexOfWinner]))\n",
-    "    \n",
+    "print(\"-------------------------\")\n",
+    "print(\"Winner: \" + str(namesOfCandidates[indexOfWinner]))\n",
+    "print(\"-------------------------\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "f = open(\"Analysis//findings.txt\",\"w\")\n",
+    "print(\"Election Results\", file =f)\n",
+    "print(\"-------------------------\", file=f)\n",
+    "print(\"Total Votes: \" +str(totalVotes), file=f)\n",
+    "print(\"-------------------------\",file=f)\n",
+    "for candidate in dicOfCandidates:\n",
+    "    percentageOfVotes=round((dicOfCandidates[candidate]/float(totalVotes))*100.0,3)\n",
+    "        \n",
+    "    print(f\"{candidate}:{percentageOfVotes}% ({dicOfCandidates[candidate]})\",file=f)\n",
+    "          \n",
+    "        \n",
+    "listOfValues=list(dicOfCandidates.values())\n",
+    "mostVotes=max(listOfValues)\n",
+    "indexOfWinner=listOfValues.index(mostVotes)\n",
+    "namesOfCandidates=list(dicOfCandidates.keys())\n",
+    "print(\"-------------------------\",file=f)\n",
+    "print(\"Winner: \" + str(namesOfCandidates[indexOfWinner]),file=f)\n",
+    "print(\"-------------------------\",file=f)\n",
+    "f.close()\n",
+    "\n",
     "    "
    ]
   },
   {
-   "cell_type": "raw",
+   "cell_type": "code",
+   "execution_count": null,
    "metadata": {},
+   "outputs": [],
    "source": []
   }
  ],
